@@ -1,0 +1,41 @@
+﻿<Window x:Class="DrawingBoard.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DrawingBoard"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="DrawingAPP" Height="500" Width="1000" Background="Transparent"
+        SizeChanged="Window_SizeChanged"  KeyDown="Window_KeyDown">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Panel.ZIndex="1" Grid.Row="0">
+            <StackPanel Orientation="Horizontal" Background="Gray">
+                
+                <Image Height="50" Width="59" HorizontalAlignment="Left" VerticalAlignment="Top" Source="./image/RectangleButton.png" MouseDown="RectangleButton_MouseDown"/>
+                <Image Height="50" Width="59" HorizontalAlignment="Left" VerticalAlignment="Top" Source="./image/LineButton.png" MouseDown="LineButton_MouseDown"/>
+                <Grid>
+                    <TextBlock>Fill Color</TextBlock>
+                    <xctk:ColorPicker Panel.ZIndex="1" Name="FillColorPicker" HorizontalAlignment="Left" VerticalAlignment="Top" SelectedColorChanged="FillColorPicker_Changed" Height="30" Width="50" DisplayColorAndName="False"  Margin="9 15 0 0"/>
+                </Grid>
+                <Grid>
+                    <TextBlock>Border Color</TextBlock>
+                    <xctk:ColorPicker Panel.ZIndex="1" Name="LineColorPicker" HorizontalAlignment="Left" VerticalAlignment="Top" SelectedColorChanged="LineColorPicker_Changed" Height="30" Width="50" DisplayColorAndName="False"  Margin="9 15 0 0"/>
+                </Grid>
+                <Button Click="Load" Margin="8" Height="35" Width="192">Upload Image</Button>
+            </StackPanel>
+        </Grid>
+        
+        <Grid Panel.ZIndex="0" Grid.Row="1" Background="Transparent">
+
+            <Canvas Name="MainCanvas" MouseMove="MainCanvas_MouseMove" MouseDown="Button_MouseDown" MouseUp="Button_MouseUp"/>
+            <Image x:Name="imagePicture" Width="200" Height="200"></Image>
+            
+        </Grid>
+    </Grid>
+</Window>
